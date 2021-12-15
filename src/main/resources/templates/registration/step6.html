@@ -1,0 +1,37 @@
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Register</title>
+</head>
+<body>
+	<section>
+		<form th:action="@{/register/step6}" method="post" th:object="${step6}" enctype="multipart/form-data">
+			<legend class="border-bottom mb-4">Application Form</legend>
+			<div class="mb-3">
+				<label for="formFile" class="form-label">Color Photo</label> <input
+					class="form-control" type="file" name="photo">
+			</div>
+			<div class="mb-3">
+				<label for="formFile" class="form-label">Adhar Card</label>
+				<input class="form-control" type="file" name="adhar">
+			</div>
+			<div class="mb-3">
+				<label for="formFile" class="form-label">PAN Card</label> <input
+					class="form-control" type="file" name="pan">
+			</div>
+			<div class="mb-3">
+				<label for="formFile" class="form-label">Signature
+				</label> <input class="form-control" type="file" name="signature">
+			</div>
+			<div class="mb-3">
+				<label for="formFile" class="form-label">Voter Id Card
+				</label> <input class="form-control" type="file" name="voterIdCard">
+			</div>
+			<button type="submit" class="btn btn-primary">Next</button>
+		</form>
+	</section>
+</body>
+</html>

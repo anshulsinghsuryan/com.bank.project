@@ -1,0 +1,65 @@
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Register</title>
+</head>
+<body>
+	<section>	
+		<form th:action="@{/register/step5}" method="post" th:object="${step5}">
+		<legend class="border-bottom mb-4">Application Form</legend>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Address Line 1
+					</label> <input type="text" class="form-control" th:value="${step5.getAddressLine1()}"
+					th:classappend="${#fields.hasErrors('addressLine1')}?'is-invalid':''"
+					name="addressLine1" required>
+					<div th:each="e:${#fields.errors('addressLine1')}"
+						class="invalid-feedback" th:text="${e}"></div>
+			</div>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Address Line 2
+					</label> <input type="text" class="form-control" th:value="${step5.getAddressLine2()}"
+					th:classappend="${#fields.hasErrors('addressLine2')}?'is-invalid':''"
+					name="addressLine2" required>
+					<div th:each="e:${#fields.errors('addressLine2')}"
+						class="invalid-feedback" th:text="${e}"></div>
+			</div>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Area Code
+					</label> <input type="number" class="form-control" th:value="${step5.getAreaCode()}"
+					th:classappend="${#fields.hasErrors('areaCode')}?'is-invalid':''"
+					name="areaCode" required>
+					<div th:each="e:${#fields.errors('areaCode')}"
+						class="invalid-feedback" th:text="${e}"></div>
+			</div>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Town
+					</label> <input type="text" class="form-control" th:value="${step5.getTown()}"
+					th:classappend="${#fields.hasErrors('town')}?'is-invalid':''"
+					name="town" required>
+					<div th:each="e:${#fields.errors('town')}"
+						class="invalid-feedback" th:text="${e}"></div>
+			</div>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">District
+					</label> <input type="text" class="form-control"
+					name="district" required>
+			</div>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">State
+					</label> <input type="text" class="form-control"
+					name="state" required>
+			</div>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Country
+					</label> <input type="text" class="form-control"
+					name="country" required>
+					
+			</div>
+			<button type="submit" class="btn btn-primary">Next</button>
+		</form>
+	</section>
+</body>
+</html>

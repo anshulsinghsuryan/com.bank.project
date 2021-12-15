@@ -1,0 +1,33 @@
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Register</title>
+</head>
+<body>
+	<section>	
+		<form th:action="@{/register/step3}" method="post" th:object=${step3}>
+		<legend class="border-bottom mb-4">Application Form</legend>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Email
+					</label> <input type="email" class="form-control" th:value="${step3.getEmail()}"
+					th:classappend="${#fields.hasErrors('email')}?'is-invalid':''"
+					name="email" required>
+					<div th:each="e:${#fields.errors('email')}"
+						class="invalid-feedback" th:text="${e}"></div>
+			</div>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Mobile
+					</label> <input type="number" class="form-control" th:value="${step3.getMobile()}"
+					th:classappend="${#fields.hasErrors('mobile')}?'is-invalid':''"
+					name="mobile" required>
+					<div th:each="e:${#fields.errors('mobile')}"
+						class="invalid-feedback" th:text="${e}"></div>
+			</div>
+			<button type="submit" class="btn btn-primary">Next</button>
+		</form>
+	</section>
+</body>
+</html>

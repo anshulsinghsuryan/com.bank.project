@@ -1,0 +1,33 @@
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Register</title>
+</head>
+<body>
+	<section>	
+		<form th:action="@{/register/step2}" method="post" th:object="${step2}">
+		<legend class="border-bottom mb-4">Application Form</legend>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Father Name
+					</label> <input type="text" class="form-control" th:value="${step2.getFatherName()}"
+					th:classappend="${#fields.hasErrors('fatherName')}?'is-invalid':''"
+					name="fatherName" required>
+					<div th:each="e:${#fields.errors('fatherName')}"
+						class="invalid-feedback" th:text="${e}"></div>
+			</div>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Mother
+					Name</label> <input type="text" class="form-control" th:value="${step2.getMotherName()}"
+					th:classappend="${#fields.hasErrors('motherName')}?'is-invalid':''"
+					name="motherName" required>
+					<div th:each="e:${#fields.errors('motherName')}"
+						class="invalid-feedback" th:text="${e}"></div>
+			</div>
+			<button type="submit" class="btn btn-primary">Next</button>
+		</form>
+	</section>
+</body>
+</html>
