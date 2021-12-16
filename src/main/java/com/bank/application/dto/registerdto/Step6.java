@@ -1,7 +1,5 @@
 package com.bank.application.dto.registerdto;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class Step6 {
 
 	private String photo;

@@ -1,0 +1,24 @@
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin</title>
+</head>
+<body>
+	<section>
+		<div th:each="user:${users}">
+			<h1  th:text="${user.getFirstName() + ' ' + user.getLastName()}"></h1>
+			
+			<button th:if="${user.getRole() == 'MANAGER'}" th:href="@{'/admin/apointmanager/' + ${user.getId()}}" class="btn btn-outline-info" disabled="disabled">Manager</button>
+			<a th:unless="${user.getRole() == 'MANAGER'}" th:href="@{'/admin/apointmanager/' + ${user.getId()}}" class="btn btn-outline-info">Manager</a>
+			
+			<button th:if="${user.getRole() == 'USER'}" th:href="@{'/admin/apointuser/' + ${user.getId()}}" class="btn btn-outline-info" disabled="disabled">User</button>
+			<a th:unless="${user.getRole() == 'USER'}" th:href="@{'/admin/apointuser/' + ${user.getId()}}" class="btn btn-outline-info">User</a>
+			
+			<button th:if="${user.getRole() == 'ADMIN'}" th:href="@{'/admin/apointadmin/' + ${user.getId()}}" class="btn btn-outline-info" disabled="disabled">Admin</button>
+			<a th:unless="${user.getRole() == 'ADMIN'}" th:href="@{'/admin/apointadmin/' + ${user.getId()}}" class="btn btn-outline-info">Admin</a>
+		</div>
+	</section>
+</body>
+</html>

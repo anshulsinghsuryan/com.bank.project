@@ -82,7 +82,25 @@ public class User {
 	@Column(name="VOTERIDCARDDOCUMENT",nullable=false)
 	private String voterIdCardDocument;
 	
+	@Column(name="ROLE")
+	private String role="USER";
 	
+	@Column(name="STATUS")
+	private String status="PENDING";
+	
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public long getId() {
 		return id;
 	}
