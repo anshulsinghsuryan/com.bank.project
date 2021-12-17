@@ -25,4 +25,6 @@ public interface UserRepository extends JpaRepository<User, Long>{
 	public void updateStatus(@Param("status") String status, @Param("id") Long id);
 	
 	public List<User> findUserByRole(String role);
+	
+	public List<User> findUserByStatus(String status);
 }

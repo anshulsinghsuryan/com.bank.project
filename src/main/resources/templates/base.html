@@ -72,22 +72,9 @@
 					<h3>Our Sidebar</h3>
 					<p class='text-muted'>You can put any information here you'd
 						like.
-					<div class="list-group">
+					<div th:each="item:${map}" class="list-group">
 						<a class="list-group-item list-group-item-light btn btn-info"
-							href="#">Create Account</a> <a
-							class="list-group-item list-group-item-light  btn btn-info"
-							href="#">Apply For Insurance</a> <a
-							class="list-group-item list-group-item-light btn btn-info"
-							href="#">Apply Credit Card</a>
-							<a
-							class="list-group-item list-group-item-light btn btn-info"
-							href="#">Apply Debit Card</a>
-							<a
-							class="list-group-item list-group-item-light btn btn-info"
-							href="#">Apply Mobile Banking</a>
-							<a
-							class="list-group-item list-group-item-light btn btn-info"
-							href="#">Apply Loan</a>
+							th:href="@{'/manager'+${item.value}}" th:text="${item.key}">Create Account</a> 
 					</div>
 					</p>
 				</div>

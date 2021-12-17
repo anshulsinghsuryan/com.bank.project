@@ -238,7 +238,5 @@ public class User {
 	}
 	public void setVoterIdCardDocument(String voterIdCardDocument) {
 		this.voterIdCardDocument = voterIdCardDocument;
-	}
-	
-	
+	}	
 }

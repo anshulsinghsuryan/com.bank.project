@@ -7,10 +7,16 @@
 </head>
 <body>
 	<section>
-		<div th:each="user:${users}">
-			<div style="background: skyblue;">
-				<h1 th:text="${user.getFirstName() + ' ' + user.getLastName()}"></h1>
-				<p th:text="${user.getAddressLine1() +' ' +user.getAddressLine2()}"></p>
+		<article class="media content-section" th:each="user:${users}">
+			<img class="rounded-circle article-img"
+				th:src="@{'/data/profile/'+${user.getProfilePicture()}}">
+			<div class="media-body">
+				<h2 th:text="${user.getFirstName() +' '+user.getLastName()}"></h2>
+				<p class="article-content">
+					Mobile - <small th:text="${user.getMobile()}"></small> Email - <small
+						th:text="${user.getEmail()}"></small> Adhar - <small
+						th:text="${user.getAdhar()}"></small>
+				</p>
 
 				<button th:if="${user.getStatus() == 'PENDING'}"
 					th:href="@{'/manager/pending/' + ${user.getId()}}"
@@ -40,8 +46,7 @@
 					th:href="@{'/manager/reject/' + ${user.getId()}}"
 					class="btn btn-outline-danger">REJECT</a>
 			</div>
-			<br><br>
-		</div>
+		</article>
 	</section>
 </body>
 </html>

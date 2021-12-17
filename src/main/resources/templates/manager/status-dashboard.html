@@ -19,31 +19,31 @@
 				</p>
 
 				<button th:if="${user.getStatus() == 'PENDING'}"
-					th:href="@{'/manager/pending/' + ${user.getId()}}"
+					th:href="@{'/manager/'+ ${request} +'/pending/' + ${user.getId()}}"
 					class="btn btn-outline-info" disabled="disabled">PENDING</button>
 				<a th:unless="${user.getStatus() == 'PENDING'}"
-					th:href="@{'/manager/pending/' + ${user.getId()}}"
+					th:href="@{'/manager/'+ ${request} +'/pending/' + ${user.getId()}}"
 					class="btn btn-outline-info">PENDING</a>
 
 				<button th:if="${user.getStatus() == 'INREVIEW'}"
-					th:href="@{'/manager/inreview/' + ${user.getId()}}"
+					th:href="@{'/manager/'+ ${request} +'/inreview/' + ${user.getId()}}"
 					class="btn btn-outline-primary" disabled="disabled">INREVIEW</button>
 				<a th:unless="${user.getStatus() == 'INREVIEW'}"
-					th:href="@{'/manager/inreview/' + ${user.getId()}}"
+					th:href="@{'/manager/'+ ${request} +'/inreview/' + ${user.getId()}}"
 					class="btn btn-outline-primary">INREVIEW</a>
 
 				<button th:if="${user.getStatus() == 'APPROVED'}"
-					th:href="@{'/manager/approve/' + ${user.getId()}}"
+					th:href="@{'/manager/'+ ${request} +'/approve/' + ${user.getId()}}"
 					class="btn btn-outline-success" disabled="disabled">APPROVE</button>
 				<a th:unless="${user.getStatus() == 'APPROVED'}"
-					th:href="@{'/manager/approve/' + ${user.getId()}}"
+					th:href="@{'/manager/'+ ${request} +'/approve/' + ${user.getId()}}"
 					class="btn btn-outline-success">APPROVE</a>
 
 				<button th:if="${user.getStatus() == 'REJECTED'}"
-					th:href="@{'/manager/reject/' + ${user.getId()}}"
+					th:href="@{'/manager/'+ ${request} +'/reject/' + ${user.getId()}}"
 					class="btn btn-outline-danger" disabled="disabled">REJECT</button>
 				<a th:unless="${user.getStatus() == 'REJECTED'}"
-					th:href="@{'/manager/reject/' + ${user.getId()}}"
+					th:href="@{'/manager/'+ ${request} +'/reject/' + ${user.getId()}}"
 					class="btn btn-outline-danger">REJECT</a>
 			</div>
 		</article>

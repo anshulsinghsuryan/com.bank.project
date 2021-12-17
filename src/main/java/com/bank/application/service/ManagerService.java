@@ -34,4 +34,20 @@ public class ManagerService {
 	public void pending(Long id) {
 		userRepository.updateStatus(Constants.PENDING.toString(), id);
 	}
+	
+	public List<User> getInreviewUser(){
+		return userRepository.findUserByStatus(Constants.INREVIEW.toString());
+	}
+	
+	public List<User> getRejectedUser(){
+		return userRepository.findUserByStatus(Constants.REJECTED.toString());
+	}
+	
+	public List<User> getPendingUser(){
+		return userRepository.findUserByStatus(Constants.PENDING.toString());
+	}
+	
+	public List<User> getApprovedUser(){
+		return userRepository.findUserByStatus(Constants.APPROVED.toString());
+	}
 }
