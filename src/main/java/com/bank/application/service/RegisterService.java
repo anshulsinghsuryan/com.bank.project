@@ -1,6 +1,7 @@
 package com.bank.application.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bank.application.dto.registerdto.Step1;
@@ -18,6 +19,9 @@ public class RegisterService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	
 	private User user = new User();
 	
 	public void converStep1ToEntity(Step1 step1) {
@@ -31,6 +35,7 @@ public class RegisterService {
 	public void converStep3ToEntity(Step3 step3) {
 		user.setEmail(step3.getEmail());
 		user.setMobile(step3.getMobile());
+		user.setPassword(encoder.encode(step3.getPassword()));
 	}
 	public void converStep4ToEntity(Step4 step4) {
 		user.setDateOfBirth(step4.getDateOfBirth());

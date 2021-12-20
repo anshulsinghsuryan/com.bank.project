@@ -11,7 +11,7 @@
 			<img class="rounded-circle article-img"
 				th:src="@{'/data/profile/'+${user.getProfilePicture()}}">
 			<div class="media-body">
-				<h2 th:text="${user.getFirstName() +' '+user.getLastName()}"></h2>
+				<a th:href="@{'/admin/user/details/' + ${user.getId}}"><h2 th:text="${user.getFirstName() +' '+user.getLastName()}"></h2></a>
 				<p class="article-content">
 					Mobile - <small th:text="${user.getMobile()}"></small> Email - <small
 						th:text="${user.getEmail()}"></small> Adhar - <small

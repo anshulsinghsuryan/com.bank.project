@@ -1,0 +1,29 @@
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register</title>
+</head>
+<body>
+	<section>	
+		<form th:action="@{/login}" method="post">
+		<legend class="border-bottom mb-4">Login Form</legend>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Username
+					</label> <input type="email" class="form-control"
+					name="username" required>
+			</div>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Password
+					</label> <input type="password" class="form-control"
+					name="password" required>
+			</div>
+			<div class="mb-3">
+				<button type="submit" class="btn btn-outline-info">Login</button>
+				<a type="submit" th:href="@{/reset/password}" class="btn btn-outline-info">Forget Password</a>
+			</div>			
+		</form>
+	</section>
+</body>
+</html>

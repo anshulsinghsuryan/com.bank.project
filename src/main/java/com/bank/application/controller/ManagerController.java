@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.bank.application.enums.ApiConstants;
 import com.bank.application.enums.Constants;
 import com.bank.application.service.ManagerService;
+import com.bank.application.service.UserService;
 
 @Controller
 public class ManagerController {
 
 	@Autowired
 	private ManagerService managerService;
+	
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping("/manager")
 	public String managerDashboard(Model model) {
@@ -79,5 +83,11 @@ public class ManagerController {
 		model.addAttribute("map", map);
 		model.addAttribute("request", request);
 		return "manager/status-dashboard";
+	}
+	
+	@RequestMapping("/manager/user/details/{id}")
+	public String viewDetails(@PathVariable("id") Long id,Model model) {
+		model.addAttribute("user", userService.getUserStatus(id));
+		return "user-dashboard";
 	}
 }

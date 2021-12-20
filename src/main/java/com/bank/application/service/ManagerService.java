@@ -1,10 +1,12 @@
 package com.bank.application.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bank.application.dto.UserDto;
 import com.bank.application.entity.User;
 import com.bank.application.enums.Constants;
 import com.bank.application.repository.UserRepository;
@@ -15,8 +17,40 @@ public class ManagerService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	public List<User> getUsers(){
-		return userRepository.findUserByRole(Constants.USER.toString());
+	public List<UserDto> getUsers(){
+		List<UserDto> userList = new ArrayList<UserDto>();
+		
+		userRepository.findUserByRole(Constants.USER.toString()).forEach(item -> {
+			UserDto userDto = convertEntity(item);
+			userList.add(userDto);
+		});
+		
+		return userList;
+	}
+	
+	private UserDto convertEntity(User user) {
+		UserDto userDto = new UserDto();
+		userDto.setAddressLine1(user.getAddressLine1());
+		userDto.setAddressLine2(user.getAddressLine2());
+		userDto.setAdhar(user.getAdhar());
+		userDto.setAreaCode(user.getAreaCode());
+		userDto.setCountry(user.getCountry());
+		userDto.setDateOfBirth(user.getDateOfBirth());
+		userDto.setDistrict(user.getDistrict());
+		userDto.setEmail(user.getEmail());
+		userDto.setFather(user.getFather());
+		userDto.setFirstName(user.getFirstName());
+		userDto.setLastName(user.getLastName());
+		userDto.setMobile(user.getMobile());
+		userDto.setMother(user.getMother());
+		userDto.setPan(user.getPan());
+		userDto.setState(user.getState());
+		userDto.setStatus(user.getStatus());
+		userDto.setTown(user.getTown());
+		userDto.setVoterIdCard(user.getVoterIdCard());
+		userDto.setProfilePicture(user.getProfilePicture());
+		userDto.setId(user.getId());
+		return userDto;
 	}
 	
 	public void approve(Long id) {

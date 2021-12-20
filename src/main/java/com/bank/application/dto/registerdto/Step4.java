@@ -11,6 +11,11 @@ public class Step4 {
 	@NotBlank(message="Date of Birth can not be blank !!")
 	private String dateOfBirth;
 	
+	@NotNull(message ="OTP can not be empty !!")
+	@NotBlank(message="OTP can not be blank !!")
+	@Pattern(regexp="^\\d{6}$",message="OTP is invalid !!")
+	private String otp;
+	
 	@Pattern(regexp="^\\d{12}$",message="Adhar number is invalid !!")
 	private String adhar;
 	
@@ -47,7 +52,11 @@ public class Step4 {
 	}
 	public void setVoterIdCard(String voterIdCard) {
 		this.voterIdCard = voterIdCard;
+	}	
+	public String getOtp() {
+		return otp;
 	}
-	
-	
+	public void setOtp(String otp) {
+		this.otp = otp;
+	}
 }

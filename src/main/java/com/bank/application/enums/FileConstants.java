@@ -11,6 +11,7 @@ public enum FileConstants {
 	PDF_FILE("pdf"),
 	JPG_FILE("jpg"),
 	PNG_FILE("png"),
+	CONTENT_TYPE("text/html"),
 	MAX_FILE_SIZE(5242880),
 	;
 

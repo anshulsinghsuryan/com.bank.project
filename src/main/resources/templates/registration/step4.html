@@ -11,6 +11,14 @@
 		<form th:action="@{/register/step4}" method="post" th:object="${step4}">
 		<legend class="border-bottom mb-4">Application Form</legend>
 			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">OTP
+					</label> <input type="number" class="form-control" th:value="${step4.getOtp()}"
+					th:classappend="${#fields.hasErrors('otp')}?'is-invalid':''"
+					name="otp" required>
+					<div th:each="e:${#fields.errors('otp')}"
+						class="invalid-feedback" th:text="${e}"></div>
+			</div>
+			<div class="mb-3">
 				<label for="exampleInputEmail1" class="form-label">Date of Birth
 					</label> <input type="date" class="form-control" th:value="${step4.getDateOfBirth()}"
 					th:classappend="${#fields.hasErrors('dateOfBirth')}?'is-invalid':''"

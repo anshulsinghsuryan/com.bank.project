@@ -27,4 +27,14 @@ public interface UserRepository extends JpaRepository<User, Long>{
 	public List<User> findUserByRole(String role);
 	
 	public List<User> findUserByStatus(String status);
+	
+	public User findUserByEmail(String email);
+	
+	@Query("FROM User u WHERE u.email !=:email")
+	public List<User> adminDashboardUser(@Param("email") String email);
+
+	@Transactional
+	@Modifying
+	@Query("UPDATE User u SET u.password =:password WHERE u.email =:email")
+	public void resetPassword(@Param("password") String password, @Param("email") String email);
 }

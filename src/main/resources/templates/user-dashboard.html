@@ -1,0 +1,113 @@
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register</title>
+</head>
+<body>
+	<section>
+		<table class="table">
+			<thead class="table-success">
+				<tr>
+					<th scope="col">SN</th>
+					<th scope="col">Detail Name</th>
+					<th scope="col">Submitted Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>First Name</td>
+					<td th:text="${user.getFirstName()}">@mdo</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Last Name</td>
+					<td th:text="${user.getLastName()}">@fat</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Father</td>
+					<td th:text="${user.getFather()}">@twitter</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Mother</td>
+					<td th:text="${user.getMother()}">@mdo</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Mobile </td>
+					<td th:text="${user.getMobile()}">@fat</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>Email</td>
+					<td th:text="${user.getEmail()}">@twitter</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>Date Of Birth</td>
+					<td th:text="${user.getDateOfBirth()}">@mdo</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>Adhar</td>
+					<td th:text="${user.getAdhar()}">@fat</td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>PAN</td>
+					<td th:text="${user.getPan()}">@twitter</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>Voter Id Card</td>
+					<td th:text="${user.getVoterIdCard()}">@mdo</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>Address Line 1</td>
+					<td th:text="${user.getAddressLine1()}">@fat</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>Address Line 2</td>
+					<td th:text="${user.getAddressLine2()}">@twitter</td>
+				</tr>
+				<tr>
+					<td>13</td>
+					<td>Town</td>
+					<td th:text="${user.getTown()}">@mdo</td>
+				</tr>
+				<tr>
+					<td>14</td>
+					<td>District</td>
+					<td th:text="${user.getDistrict()}">@fat</td>
+				</tr>
+				<tr>
+					<td>15</td>
+					<td>State</td>
+					<td th:text="${user.getState()}">@twitter</td>
+				</tr>
+				<tr>
+					<td>16</td>
+					<td>Country</td>
+					<td th:text="${user.getCountry()}">@mdo</td>
+				</tr>
+				<tr>
+					<td>17</td>
+					<td>Area Code</td>
+					<td th:text="${user.getAreaCode()}">@fat</td>
+				</tr>
+				<tr>
+					<td>18</td>
+					<td>Status</td>
+					<td class="btn-danger" th:text="${user.getStatus()}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</body>
+</html>

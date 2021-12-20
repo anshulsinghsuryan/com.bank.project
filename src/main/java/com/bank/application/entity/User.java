@@ -28,22 +28,22 @@ public class User {
 	@Column(name="MOTHER",nullable=false)
 	private String mother;
 	
-	@Column(name="MOBILE",nullable=false)
+	@Column(name="MOBILE",nullable=false,unique=true)
 	private String mobile;
 	
-	@Column(name="EMAIL",nullable=false)
+	@Column(name="EMAIL",nullable=false,unique=true)
 	private String email;
 	
 	@Column(name="DATEOFBIRTH",nullable=false)
 	private String dateOfBirth;
 	
-	@Column(name="ADHAR",nullable=false)
+	@Column(name="ADHAR",nullable=false,unique=true)
 	private String adhar;
 	
-	@Column(name="PAN",nullable=false)
+	@Column(name="PAN",nullable=false,unique=true)
 	private String pan;
 	
-	@Column(name="VOTERIDCARD",nullable=false)
+	@Column(name="VOTERIDCARD",nullable=false,unique=true)
 	private String voterIdCard;
 	
 	@Column(name="ADDRESSLINE1",nullable=false)
@@ -88,7 +88,15 @@ public class User {
 	@Column(name="STATUS")
 	private String status="PENDING";
 	
+	@Column(name="PASSWORD")
+	private String password;
 	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getRole() {
 		return role;
 	}
