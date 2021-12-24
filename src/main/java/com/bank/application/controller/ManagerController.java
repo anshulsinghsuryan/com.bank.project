@@ -1,7 +1,10 @@
 package com.bank.application.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,9 +39,15 @@ public class ManagerController {
 	}
 
 	@RequestMapping("/manager/{status}/{id}")
-	public String manager_dashboard_service(@PathVariable("status") String status,@PathVariable("id") Long id, Model model) {
+	public String manager_dashboard_service(@PathVariable("status") String status,@PathVariable("id") Long id, Model model,Principal principal, HttpSession session) {
 		if(status.equals("approve")) {
-			managerService.approve(id);
+			String token = (String) session.getAttribute("token");
+			if(token != null) {
+				managerService.approve(id, token);
+			} else {
+				return "redirect:/account/verification";
+			}
+			
 		} else if (status.equals("reject")) {
 			managerService.reject(id);
 		} else if(status.equals("inreview")) {
@@ -50,9 +59,9 @@ public class ManagerController {
 	}
 	
 	@RequestMapping("/manager/{request}/{status}/{id}")
-	public String manager_status_dashboard_service(@PathVariable("request") String request, @PathVariable("status") String status, @PathVariable("id") Long id, Model model) {
+	public String manager_status_dashboard_service(@PathVariable("request") String request, @PathVariable("status") String status, @PathVariable("id") Long id, Model model, Principal principal) {
 		if(status.equals("approve")) {
-			managerService.approve(id);
+			managerService.approve(id, principal.getName());
 		} else if (status.equals("reject")) {
 			managerService.reject(id);
 		} else if(status.equals("inreview")) {

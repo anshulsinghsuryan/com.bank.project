@@ -1,0 +1,23 @@
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register</title>
+</head>
+<body>
+	<section>	
+		<form th:action="@{/account/verify}" method="post">
+		<legend class="border-bottom mb-4">Please Verify Your Password</legend>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Password
+					</label> <input type="password" class="form-control"
+					name="password" required>
+			</div>
+			<div class="mb-3">
+				<button type="submit" class="btn btn-outline-info">Verify</button>
+			</div>			
+		</form>
+	</section>
+</body>
+</html>

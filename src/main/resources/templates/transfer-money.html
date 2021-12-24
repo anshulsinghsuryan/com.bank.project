@@ -1,0 +1,28 @@
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register</title>
+</head>
+<body>
+	<section>	
+		<form th:action="@{/account/transfer}" method="post">
+		<legend class="border-bottom mb-4">Money Transfer</legend>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Account Number
+					</label> <input type="number" class="form-control"
+					name="account" required>
+			</div>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Amount
+					</label> <input type="number" class="form-control"
+					name="ammount" required>
+			</div>
+			<div class="mb-3">
+				<button type="submit" class="btn btn-outline-info">Send</button>
+			</div>			
+		</form>
+	</section>
+</body>
+</html>

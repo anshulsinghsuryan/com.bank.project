@@ -1,0 +1,38 @@
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register</title>
+</head>
+<body>
+	<section>
+		<table class="table">
+			<thead class="table-success">
+				<tr>
+					<th scope="col">SN</th>
+					<th scope="col">Name</th>
+					<th scope="col">Result</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Name</td>
+					<td th:text="${account.getFirstName() +' '+ account.getLastName}"></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Account Number</td>
+					<td th:text="${account.getAccount()}"></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Balance</td>
+					<td th:text="${account.getBalance()}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</body>
+</html>

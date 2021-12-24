@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bank.application.dto.ResetPasswordDto1;
 import com.bank.application.dto.ResetPasswordDto2;
+import com.bank.application.dto.UserDto;
 import com.bank.application.dto.registerdto.Step1;
 import com.bank.application.dto.registerdto.Step2;
 import com.bank.application.dto.registerdto.Step3;
@@ -27,6 +28,8 @@ import com.bank.application.dto.registerdto.Step4;
 import com.bank.application.dto.registerdto.Step5;
 import com.bank.application.dto.registerdto.Step6;
 import com.bank.application.email.EmailSender;
+import com.bank.application.entity.User;
+import com.bank.application.enums.Constants;
 import com.bank.application.enums.FileConstants;
 import com.bank.application.service.OtpService;
 import com.bank.application.service.PasswordResetService;
@@ -316,7 +319,11 @@ public class UserController {
 	
 	@RequestMapping("/user/dashboard")
 	public String userDashboard(Principal principal, Model model) {
-		model.addAttribute("user", userService.getUserStatus(principal.getName()));
+		UserDto user = userService.getUserStatus(principal.getName());
+		model.addAttribute("user", user);
+		if(user.getStatus().equals(Constants.APPROVED.toString())) {
+			return "redirect:/account/details";
+		}
 		return "user-dashboard";
 	}
 }

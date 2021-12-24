@@ -6,7 +6,9 @@ public enum ApiConstants {
 	VIEW_ALL_INREVIEW("/view-all-inreview"),
 	VIEW_ALL_REJECTED("/view-all-rejected"),
 	VIEW_ALL_PENDING("/view-all-pending"),
-	
+	ACCOUNT("account"),
+	SLASH("/"),	
+	ACCOUNT_SERVER_ADDRESS("http://localhost:8081/"),
 	
 	;
 
