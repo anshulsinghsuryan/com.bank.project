@@ -1,0 +1,37 @@
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register</title>
+</head>
+<body>
+	<section>
+		<table class="table">
+			<thead class="table-success">
+				<tr>
+					<th scope="col">TransactionId</th>
+					<th scope="col">Account</th>
+					<th scope="col">Status</th>
+					<th scope="col">Amount</th>
+					<th scope="col">Value</th>
+					<th scope="col">Date</th>
+				</tr>
+			</thead>
+			<tbody th:each="transaction:${transactions}">
+				<tr>
+					
+					<td th:text="${transaction.getTransactionId()}"></td>
+					<td th:text="${transaction.getAccount()}">1</td>
+					<td th:if="${transaction.getStatus() == 'SUCCESS'}" class="btn-outline-success"><a th:href="@{'/account/transaction/details/'+ ${transaction.getTransactionId()}}" th:text="${transaction.getStatus()}"></a></td>
+					<td th:if="${transaction.getStatus() == 'FAILED'}" class="btn-outline-danger"><a th:href="@{'/account/transaction/details/'+ ${transaction.getTransactionId()}}" th:text="${transaction.getStatus()}"></a></td>
+					<td th:text="${transaction.getAmmount()}">1</td>
+					<td th:text="${transaction.getValue()}">1</td>
+					<td th:text="${transaction.getTransactionOn()}">1</td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</body>
+</html>

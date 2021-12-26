@@ -9,6 +9,8 @@ public enum ApiConstants {
 	ACCOUNT("account"),
 	SLASH("/"),	
 	ACCOUNT_SERVER_ADDRESS("http://localhost:8081/"),
+	TRANSACTIONS("/account/transaction/details"),
+	DASHBOARD("/dashboard"),
 	
 	;
 

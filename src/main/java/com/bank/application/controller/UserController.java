@@ -1,10 +1,12 @@
 package com.bank.application.controller;
 
 import java.security.Principal;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +15,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bank.application.dto.ResetPasswordDto1;
@@ -28,7 +32,6 @@ import com.bank.application.dto.registerdto.Step4;
 import com.bank.application.dto.registerdto.Step5;
 import com.bank.application.dto.registerdto.Step6;
 import com.bank.application.email.EmailSender;
-import com.bank.application.entity.User;
 import com.bank.application.enums.Constants;
 import com.bank.application.enums.FileConstants;
 import com.bank.application.service.OtpService;
@@ -38,6 +41,9 @@ import com.bank.application.service.UserService;
 import com.bank.application.utility.FileUtility;
 import com.bank.application.utility.MessageService;
 import com.bank.application.utility.ValidateFile;
+import com.razorpay.Order;
+import com.razorpay.RazorpayClient;
+import com.razorpay.RazorpayException;
 
 @Controller
 public class UserController {
@@ -325,5 +331,36 @@ public class UserController {
 			return "redirect:/account/details";
 		}
 		return "user-dashboard";
+	}
+	
+	@RequestMapping("/dashboard")
+	public String dashboard(Principal principal) {
+		UserDto user = userService.getUserStatus(principal.getName());
+		if(user.getRole().equals("MANAGER")) {
+			return "redirect:/manager";
+		} else if(user.getRole().equals("ADMIN")) {
+			return "redirect/admin";
+		} else {
+			return "redirect:/account/details";
+		}
+	}
+	
+	@RequestMapping("/about")
+	public String about() {
+		return "about";
+	}
+	
+	@RequestMapping(value="/createOrder",method=RequestMethod.POST)
+	@ResponseBody
+	public String createOrder(@RequestBody Map<String, Object> data) throws RazorpayException{
+		int amt = Integer.parseInt(data.get("amount").toString());
+		var client = new RazorpayClient("rzp_test_87ptkLuP39BdOD","ivFpiN90kAoOmZXCtfltK54b");
+		JSONObject ob = new JSONObject();
+		ob.put("amount",amt*100);
+		ob.put("currency", "INR");
+		ob.put("receipt", "txt_789878");
+		//Save to database if required payment information
+		Order order = client.Orders.create(ob);
+		return order.toString();
 	}
 }

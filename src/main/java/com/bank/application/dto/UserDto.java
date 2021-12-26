@@ -40,6 +40,8 @@ public class UserDto {
 	
 	private String status;
 	
+	private String role;
+	
 	private String profilePicture;
 
 	public String getFirstName() {
@@ -200,5 +202,13 @@ public class UserDto {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

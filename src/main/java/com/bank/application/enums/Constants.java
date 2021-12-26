@@ -9,5 +9,7 @@ public enum Constants {
 	REJECTED,
 	APPROVED,
 	INREVIEW,
+	TRANSACTIONS,
+	DASHBOARD,
 	;
 }

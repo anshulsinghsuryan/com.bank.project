@@ -46,6 +46,7 @@ public class UserService {
 		this.userDto.setStatus(user.getStatus());
 		this.userDto.setTown(user.getTown());
 		this.userDto.setVoterIdCard(user.getVoterIdCard());
+		this.userDto.setRole(user.getRole());
 	}
 }
 

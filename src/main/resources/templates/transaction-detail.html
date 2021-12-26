@@ -1,0 +1,55 @@
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register</title>
+</head>
+<body>
+	<section>
+		<table class="table">
+			<thead class="table-success">
+				<tr>
+					<th scope="col">SN</th>
+					<th scope="col">Field</th>
+					<th scope="col">Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>TransactionId</td>
+					<td th:text="${transaction.getTransactionId()}"></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Account Number</td>
+					<td th:text="${transaction.getAccount()}"></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Status</td>
+					<td th:if="${transaction.getStatus() == 'SUCCESS'}" class="btn-success" th:text="${transaction.getStatus()}"></td>
+					<td th:if="${transaction.getStatus() == 'FAILED'}" class="btn-danger" th:text="${transaction.getStatus()}"></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Amount</td>
+					<td th:text="${transaction.getAmmount()}"></td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Type</td>
+					<td th:text="${transaction.getValue()}"></td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>Date</td>
+					<td th:text="${transaction.getTransactionOn()}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{'/account/transaction/details/download/'+ ${transaction.getTransactionId()}}" class="btn btn-outline-success">Download</a>
+	</section>
+</body>
+</html>
